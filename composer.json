@@ -1,0 +1,9 @@
+{
+	"name": "infrajs/each",
+	"license": "GPL3",
+	"autoload": {
+		"psr-4": { "infrajs\\each\\": "" }
+	},
+	"require":{
+	}
+}
