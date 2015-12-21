@@ -1,5 +1,5 @@
 <?php
-namespace infrajs\infra;
+namespace infrajs\each;
 class Fix
 {
 	public function __construct($opt, $ret = null)
