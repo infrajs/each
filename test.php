@@ -38,10 +38,9 @@ $b = &$a;
 assert(true === Each::isEqual($a, $b));
 
 /*
- * Проверяем, что при передаче любых значений (будь то текст, число, булево, массив и т.д.) на выходе мы гарантировано
- * получим массив.
+ * Проверяем, количество вызовов.
  */
-$el = '2';
-Each::exec($el, function ($b) use (&$el) {$el = $b;});
-var_dump($el);
-exit();
+$counter=0;
+$el = ['oduvanio', 'mail'];
+Each::exec($el, function () use (&$counter) {$counter++;});
+assert(2 === $counter);
