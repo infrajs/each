@@ -52,7 +52,7 @@ class Each {
 	}
 	public static function &exec(&$el, $callback, &$_group = null, $_key = null)
 	{
-		//Бежим по массиву рекурсивно
+		//Бежим по массиву рекурсивно [1, [3, 4], 3]
 		if (Each::isAssoc($el) === false) {
 			for ($i = 0, $l = sizeof($el); $i < $l; $i++) {
 				$r = &Each::exec($el[$i], $callback, $el, $i);
