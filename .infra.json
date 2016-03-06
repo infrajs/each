@@ -1,3 +1,4 @@
 {
-	"js":"each.js"
+	"js":"each.js",
+	"tester":"test.php"
 }
