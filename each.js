@@ -131,13 +131,7 @@ infra.forr=function(el,callback,back){//Бежим по массиву
 		}
 	}
 };
-infra.foru=function(obj,callback,back){//Бежим без разницы объекту или массиву
-	if(obj&&typeof(obj)=='object'&&obj.constructor===Array){
-		return infra.forr(obj,callback,back);//Массив
-	}else{
-		return infra.foro(obj,callback,back);//Объект
-	}
-};
+
 infra.forx=function(obj,callback,back){//Бежим сначало по объекту а потом по его свойствам как по массивам
 	return infra.foro(obj,function(v,key){
 		return infra.fora(v,function(el,i,group){
