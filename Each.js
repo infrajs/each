@@ -1,20 +1,5 @@
 
-if (!Function.prototype.bind){
-	Function.prototype.bind = function(object,arguments){
-		var that = this;//функция у которой нужно сделать this как object
-
-		var func=function() {
-			return that.apply(object,arguments);
-		}
-		if(!func.binded){
-			func.binded=true;//Первый bind важней второго
-			func.toString=function(){
-				return that.toString()+'\nbinded: '+object;//Два бинда не должны приводить к рекурсии
-			};
-		}
-		return func;
-	}
-}
+if (!window.infra) window.infra={}; if (!window.infrajs) window.infrajs={};
 infra.foro=function(obj,callback,back){//Бежим по объекту
 	if(!obj||typeof(obj)!=='object')return;
 	var r,ar=[],key,el,fn=back?'pop':'shift';
@@ -147,4 +132,28 @@ infra.fory=function(obj,callback,back){//Бежим по свойствам об
 			return callback.apply(infra,[el,key,group,i]);
 		},back);
 	},back);
+}
+
+window.Each = {};
+Each.isNull = function (r)
+{
+	if (r === undefined) return true;
+	if (r === null) return true;
+	return false;
+}
+Each.exec = function (el, callback, _group, _key)
+{
+	//Бежим по массиву рекурсивно [1, [3, 4], 3]
+	if (el instanceof Array) {
+		for (var i = 0, l = sizeof(el); i < l; i++) {
+			var r = Each.exec(el[i], callback, el, i);
+			if (!Each.isNull(r)) return r;
+		}
+	} else if (!Each.isNull(el)) {
+		//Если undefined callback не вызывается, Таким образом можно безжать по переменной не проверя определена она или нет.
+		var r = callback(el, _key, _group);
+		return r;
+	} else {
+		return null;
+	}
 }
