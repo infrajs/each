@@ -145,7 +145,7 @@ Each.exec = function (el, callback, _group, _key)
 {
 	//Бежим по массиву рекурсивно [1, [3, 4], 3]
 	if (el instanceof Array) {
-		for (var i = 0, l = sizeof(el); i < l; i++) {
+		for (var i = 0, l = el.length; i < l; i++) {
 			var r = Each.exec(el[i], callback, el, i);
 			if (!Each.isNull(r)) return r;
 		}
