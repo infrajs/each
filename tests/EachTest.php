@@ -64,8 +64,10 @@ class EachTest extends PHPUnit_Framework_TestCase
          */
         $counter = 0;
         $el = ['oduvanio', 'mail'];
-        Each::exec($el, function () use (&$counter) {
+        Each::exec($el, function &() use (&$counter) {
+            $r = null;
             $counter++;
+            return $r;
         });
         $this->assertTrue(2 === $counter);
         $counter = 0;

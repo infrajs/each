@@ -54,33 +54,43 @@ if (!is_file('vendor/autoload.php')) {
      */
     $counter = 0;
     $el = ['oduvanio', 'mail'];
-    Each::exec($el, function () use (&$counter) {
+    Each::exec($el, function &() use (&$counter) {
+        $r = null;
         $counter++;
+        return $r;
     });
     assert(2 === $counter);
     $counter = 0;
     $el = [2, [4, 6], 5];
-    Each::exec($el, function ($b) use (&$counter) {
+    Each::exec($el, function &($b) use (&$counter) {
+        $r = null;
         $counter++;
         if ($counter === 3) {
             assert(6 === $b);
         }
+        return $r;
     });
     assert(4 === $counter);
     $counter = 0;
     $el = 1;
-    Each::exec($el, function () use (&$counter) {
+    Each::exec($el, function &() use (&$counter) {
+        $r = null;
         $counter++;
+        return $r;
     });
     assert(1 === $counter);
     $el = 'test';
-    Each::exec($el, function () use (&$counter) {
+    Each::exec($el, function &() use (&$counter) {
+        $r = null;
         $counter++;
+        return $r;
     });
     assert(2 === $counter);
     $el = ['name' => 'oduvanio', 'email' => 'mail'];
-    Each::exec($el, function () use (&$counter) {
+    Each::exec($el, function &() use (&$counter) {
+        $r = null;
         $counter++;
+        return $r;
     });
     assert(3 === $counter);
 
