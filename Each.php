@@ -60,7 +60,7 @@ class Each {
 			}
 		} elseif (!is_null($el)) {
 			//Если undefined callback не вызывается, Таким образом можно безжать по переменной не проверя определена она или нет.
-			$r=&$callback($el, $_key, $_group);
+			$r = &$callback($el, $_key, $_group);
 			return $r;
 		} else {
 			return $el;
@@ -72,12 +72,12 @@ class Each {
 		//Бежим по массиву рекурсивно
 		if (Each::isAssoc($el) === false) {
 			return Each::forr($el, function &(&$v, $i) use (&$el, $callback, $back) {
-				$r=&Each::fora($v, $callback, $back, $el, $i);
+				$r = &Each::fora($v, $callback, $back, $el, $i);
 				return $r;
 			}, $back);
 		} elseif (!is_null($el)) {
 			//Если undefined callback не вызывается, Таким образом можно безжать по переменной не проверя определена она или нет.
-			$r=&$callback($el, $_key, $_group);
+			$r = &$callback($el, $_key, $_group);
 			return $r;
 		} else {
 			return $el;
