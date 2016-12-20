@@ -158,6 +158,8 @@ class Each {
 				if (!is_null($r->opt['ret'])) {
 					return $r->opt['ret'];
 				}
+				$r = null;
+				return $r;
 			} else {
 				return $r;
 			}
