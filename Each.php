@@ -91,7 +91,7 @@ class Each {
 		if (!$id) {
 			$id = 0;
 		}
-		$idi = (int) $id;
+		$idi = (float) $id;
 		$idi = (string) $idi; //12 = '12 asdf' а если и то и то строка '12'!='12 asdf'
 		return $id == $idi;
 	}
