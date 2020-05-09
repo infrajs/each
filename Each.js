@@ -1,5 +1,5 @@
 
-if (!window.infra) window.infra={}; if (!window.infrajs) window.infrajs={};
+if (!window.infra) window.infra={};
 infra.foro=function(obj,callback,back){//Бежим по объекту
 	if(!obj||typeof(obj)!=='object')return;
 	var r,ar=[],key,el,fn=back?'pop':'shift';
@@ -134,7 +134,7 @@ infra.fory=function(obj,callback,back){//Бежим по свойствам об
 	},back);
 }
 
-window.Each = {};
+let Each = {};
 Each.isNull = function (r)
 {
 	if (r === undefined) return true;
@@ -157,3 +157,6 @@ Each.exec = function (el, callback, _group, _key)
 		return null;
 	}
 }
+
+window.Each = Each
+export {Each}
